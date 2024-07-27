@@ -27,6 +27,7 @@ wss.on("connection", function (ws) {
 
   ws.on("message", (data: string, isBinary) => {
     wss.clients.forEach((client) => {
+      console.log(client);
       if (client.readyState === WebSocket.OPEN) {
         const JSONdata = JSON.parse(data);
         const newData = { ...JSONdata, connections };

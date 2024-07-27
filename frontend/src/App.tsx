@@ -1,11 +1,26 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Group from "./pages/Group";
+import RoomChat from "./pages/RoomChat";
+import GroupChat from "./pages/GroupChat";
+import RoomChatOwner from "./pages/RoomChatOwner";
+import RoomChatId from "./pages/RoomChatId";
+import RoomChatMembers from "./pages/RoomChatMembers";
+import Home from "./pages/Home";
+import Receiver from "./pages/Receiver";
+import Sender from "./pages/Sender";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Group />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/sender" element={<Sender />} />
+      <Route path="/receiver" element={<Receiver />} />
+
+      <Route path="/groupchat/:id" element={<GroupChat />} />
+      <Route path="/roomchat" element={<RoomChat />} />
+      <Route path="/roomchat/create/:roomId/:id" element={<RoomChatOwner />} />
+      <Route path="/roomchat/join" element={<RoomChatId />} />
+      <Route path="/roomchat/join/:roomId/:id" element={<RoomChatMembers />} />
     </Routes>
   );
 }
@@ -14,7 +29,7 @@ export default App;
 
 // Assignment
 // ! WebSocket              WebRTC
-// Group Chat               Group Chat
+// Group Chat ✅            Group Chat
 // Rooms using id           Room logic
 //                          p2p (single)
 //                          p2p (double)

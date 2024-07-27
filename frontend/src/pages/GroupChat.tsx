@@ -6,19 +6,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Users } from "lucide-react";
 import { Message, MessageSend } from "@/types/interfaces";
-import { v4 as uuidv4 } from "uuid";
 import Loader from "@/components/Loader";
+import { useParams } from "react-router-dom";
 
-const Group: React.FC = () => {
+const GroupChat: React.FC = () => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const [message, setMessage] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const [id, setId] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [isLoading, setLoading] = useState(true);
+  const { id } = useParams();
 
   useEffect(() => {
-    setId(uuidv4());
     console.log(id);
     const newSocket = new WebSocket("ws://localhost:8080");
 
@@ -140,4 +139,4 @@ const Group: React.FC = () => {
   );
 };
 
-export default Group;
+export default GroupChat;
